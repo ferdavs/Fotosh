@@ -7,7 +7,7 @@ import io.reactivex.disposables.Disposable;
  * Created by f on 10/31/17.
  */
 
-public class RxPresenter extends AbstractPresenter {
+public class RxPresenter<V> extends AbstractPresenter<V> {
     private CompositeDisposable subscriptions = new CompositeDisposable();
 
     @Override

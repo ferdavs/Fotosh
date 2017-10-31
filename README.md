@@ -2,7 +2,7 @@
 
 Photo Search app using Pixabay
 
-used (this)[arch] project as an example
+used this [arch] project as an example
 
 |        |     |
 | ---  | --- |

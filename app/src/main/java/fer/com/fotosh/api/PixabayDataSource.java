@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import fer.com.fotosh.model.ImageItem;
-import fer.com.fotosh.model.ImageItemList;
+import fer.com.fotosh.model.VideoItem;
+import io.reactivex.Observable;
 
 /**
  * Created by f on 7/19/17.
@@ -16,10 +17,20 @@ public class PixabayDataSource implements DataSource {
             "&image_type=photo" +
             "&per_page=50";
 
+//    @Override
+//    public List<ImageItem> search(String term) throws ExecutionException, InterruptedException {
+//        String url = rootApi + "&q=" + term;
+//        ImageItemList list = ApiRequest.run().execute(url).get();
+//        return list.hits;
+//    }
+
     @Override
-    public List<ImageItem> search(String term) throws ExecutionException, InterruptedException {
-        String url = rootApi + "&q=" + term;
-        ImageItemList list = ApiRequest.run().execute(url).get();
-        return list.hits;
+    public Observable<List<ImageItem>> searchImage(String term) throws ExecutionException, InterruptedException {
+        return Observable.fromArray();
+    }
+
+    @Override
+    public Observable<List<VideoItem>> searchVideo(String term) throws ExecutionException, InterruptedException {
+        return Observable.fromArray();
     }
 }

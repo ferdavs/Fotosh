@@ -3,7 +3,6 @@ package fer.com.fotosh.search.video;
 import java.util.List;
 
 import fer.com.fotosh.core.RxPresenter;
-import fer.com.fotosh.model.ImageItem;
 import fer.com.fotosh.model.VideoItem;
 import fer.com.fotosh.search.image.ImageSearchContract;
 

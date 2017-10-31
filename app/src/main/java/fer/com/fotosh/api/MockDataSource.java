@@ -2,6 +2,10 @@ package fer.com.fotosh.api;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import fer.com.fotosh.model.VideoItem;
+import io.reactivex.Observable;
+
 import java.util.concurrent.ExecutionException;
 
 import fer.com.fotosh.model.ImageItem;
@@ -12,20 +16,13 @@ import fer.com.fotosh.model.ImageItem;
 
 public class MockDataSource implements DataSource {
     @Override
-    public List<ImageItem> search(String term) throws ExecutionException, InterruptedException {
-        return getListItemData();
+    public Observable<List<ImageItem>> searchImage(String term) throws ExecutionException, InterruptedException {
+        return Observable.amb(new ArrayList<>());
     }
 
-    private List<ImageItem> getListItemData() {
-        List<ImageItem> listViewItems = new ArrayList<>();
-        listViewItems.add(new ImageItem("1984", "George Orwell"));
-        listViewItems.add(new ImageItem("Pride and Prejudice", "Jane Austen"));
-        listViewItems.add(new ImageItem("One Hundred Years of Solitude", "Gabriel Garcia Marquez"));
-        listViewItems.add(new ImageItem("The Book Thief", "Markus Zusak"));
-        listViewItems.add(new ImageItem("The Hunger Games", "Suzanne Collins"));
-        listViewItems.add(new ImageItem("The Hitchhiker's Guide to the Galaxy", "Douglas Adams"));
-        listViewItems.add(new ImageItem("The Theory Of Everything", "Dr Stephen Hawking"));
-
-        return listViewItems;
+    @Override
+    public Observable<List<VideoItem>> searchVideo(String term) throws ExecutionException, InterruptedException {
+        return Observable.amb(new ArrayList<>());
     }
+
 }

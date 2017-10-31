@@ -65,6 +65,9 @@ dependencies {
     annotationProcessor libraries.daggerCompiler
     compile libraries.rxJava
     compile libraries.rxAndroid
+    compile libraries.rxLifecycle
+    compile libraries.rxLifecycleAndroid
+    compile libraries.rxLifecycleComponents
     compile libraries.rxBinding2
     compile libraries.rxBinding2Support
     compile libraries.okHttp

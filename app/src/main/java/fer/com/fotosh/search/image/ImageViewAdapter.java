@@ -1,4 +1,4 @@
-package fer.com.fotosh.ui;
+package fer.com.fotosh.search.image;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -52,7 +52,7 @@ public class ImageViewAdapter extends RecyclerView.Adapter<ImageViewHolder> {
 
         Glide.with(context)
              .load(item.getPreviewURL())
-             .diskCacheStrategy(DiskCacheStrategy.RESULT)
+//             .diskCacheStrategy(DiskCacheStrategy.RESULT)
 //             .centerCrop()
 //             .crossFade()
 //             .skipMemoryCache(true)

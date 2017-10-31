@@ -1,12 +1,10 @@
-package fer.com.fotosh.ui;
+package fer.com.fotosh.search.image;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import fer.com.fotosh.R;
 import fer.com.fotosh.model.ImageItem;
@@ -26,8 +24,8 @@ public class ImageViewHolder extends RecyclerView.ViewHolder implements
         super(itemView);
         this.context = context;
         itemView.setOnClickListener(this);
-        tags = (TextView) itemView.findViewById(R.id.tags);
-        image = (ImageView) itemView.findViewById(R.id.image);
+        tags = itemView.findViewById(R.id.tags);
+        image = itemView.findViewById(R.id.image);
 
 
     }

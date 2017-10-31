@@ -1,7 +1,6 @@
-package fer.com.fotosh.ui;
+package fer.com.fotosh.search.image;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,16 +29,11 @@ public class ImageDialog extends View {
         super(context);
         this.item = item;
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        builder.setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.dismiss());
         dialog = builder.create();
         View dialogLayout = LayoutInflater.from(context).inflate(R.layout.image_large, null);
-        largeImage = (ImageView) dialogLayout.findViewById(R.id.largeImage);
-        largeTags = (TextView) dialogLayout.findViewById(R.id.tagsLarge);
+        largeImage = dialogLayout.findViewById(R.id.largeImage);
+        largeTags = dialogLayout.findViewById(R.id.tagsLarge);
         dialog.setView(dialogLayout);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
     }
@@ -47,11 +41,11 @@ public class ImageDialog extends View {
     public void show() {
 
         Glide.with(getContext())
-             .load(item.getWebformatURL())
-             .diskCacheStrategy(DiskCacheStrategy.RESULT)
-             .placeholder(R.drawable.loader)
-             .skipMemoryCache(false)
-             .into(largeImage);
+                .load(item.getWebformatURL())
+//             .diskCacheStrategy(DiskCacheStrategy.ALL)
+//             .placeholder(R.drawable.loader)
+//             .skipMemoryCache(false)
+                .into(largeImage);
         largeTags.setText(item.getTags());
         dialog.show();
     }

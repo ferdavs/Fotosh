@@ -16,8 +16,10 @@ import java.util.concurrent.ExecutionException;
 
 import fer.com.fotosh.api.DataSource;
 import fer.com.fotosh.api.PixabayDataSource;
-import fer.com.fotosh.model.ImageItem;
+import fer.com.fotosh.data.model.ImageItem;
 import fer.com.fotosh.search.image.ImageViewAdapter;
+import io.reactivex.disposables.Disposable;
+import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
     ImageViewAdapter rcAdapter;
@@ -48,8 +50,10 @@ public class MainActivity extends AppCompatActivity {
             String query = intent.getStringExtra(SearchManager.QUERY).replace(' ', ',');
             try {
                 rcAdapter.removeAll();
-                rcAdapter.addItems(dataSource.search(query));
-            } catch (ExecutionException | InterruptedException e) {
+                Disposable subscribe = dataSource.searchImage(query)
+                        .subscribe(imageItems -> rcAdapter.addItem(imageItems), Timber::e);
+
+            } catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT)
                         .show();
             }
@@ -70,8 +74,10 @@ public class MainActivity extends AppCompatActivity {
         if (!startedFlag) {
             startedFlag = true;
             try {
-                rcAdapter.addItems(dataSource.search("cat"));
-            } catch (ExecutionException | InterruptedException e) {
+                Disposable cat = dataSource.searchImage("cat")
+                        .subscribe(imageItems -> rcAdapter.addItem(imageItems), Timber::e);
+
+            } catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT)
                         .show();
             }

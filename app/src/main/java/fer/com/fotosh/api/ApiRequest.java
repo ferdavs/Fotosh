@@ -2,19 +2,27 @@ package fer.com.fotosh.api;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import fer.com.fotosh.model.ImageItemList;
+import fer.com.fotosh.data.json.EntityTypeAdapterFactory;
+import fer.com.fotosh.data.model.ImageItemList;
+import timber.log.Timber;
 
 /**
  * Created by f on 7/18/17.
  */
 class ApiRequest extends AsyncTask<String, Void, ImageItemList> {
+
+    //TODO use DI
+    Gson gson = new GsonBuilder()
+            .setLenient()
+            .registerTypeAdapterFactory(EntityTypeAdapterFactory.create())
+            .create();
 
     private ApiRequest() {
     }
@@ -29,21 +37,12 @@ class ApiRequest extends AsyncTask<String, Void, ImageItemList> {
                      new BufferedReader(
                              new InputStreamReader(
                                      new java.net.URL(urldisplay).openStream()))) {
-            StringBuffer sb = new StringBuffer();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line).append("\n");
-            }
 
-            return new Gson().fromJson(sb.toString(), ImageItemList.class);
+
+            return ImageItemList.typeAdapter(gson).fromJson(reader);
         } catch (Exception e) {
-            Log.e("Error", e.getMessage());
-//            e.printStackTrace();
-//                    Toast.makeText(view.getContext(),
-//                "Clicked Position = " + getAdapterPosition(), Toast.LENGTH_SHORT)
-//                         .show();
-
+            Timber.e(e);
         }
-        return new ImageItemList();
+        return null;
     }
 }

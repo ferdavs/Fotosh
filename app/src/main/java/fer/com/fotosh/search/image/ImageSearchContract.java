@@ -3,7 +3,7 @@ package fer.com.fotosh.search.image;
 import java.util.List;
 
 import fer.com.fotosh.core.RxPresenter;
-import fer.com.fotosh.model.ImageItem;
+import fer.com.fotosh.data.model.ImageItem;
 
 /**
  * Created by f on 10/31/17.

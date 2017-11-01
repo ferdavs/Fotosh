@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import fer.com.fotosh.R;
-import fer.com.fotosh.model.ImageItem;
+import fer.com.fotosh.data.model.ImageItem;
 
 /**
  * Created by f on 7/18/17.

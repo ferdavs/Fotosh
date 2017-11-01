@@ -1,7 +1,7 @@
 package fer.com.fotosh.search.video;
 
 import fer.com.fotosh.core.RxPresenter;
-import fer.com.fotosh.model.VideoItem;
+import fer.com.fotosh.data.model.VideoItem;
 
 /**
  * Created by f on 10/31/17.

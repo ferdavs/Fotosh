@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import fer.com.fotosh.Helper;
-import fer.com.fotosh.model.ImageItemList;
+import fer.com.fotosh.data.model.ImageItemList;
 
 /**
  * Created by f on 7/22/17.
@@ -24,7 +24,7 @@ public class ApiRequestTest {
         if (Helper.isNetworkAvailable(context)) {
             String url = "";
             ImageItemList imageItemList = ApiRequest.run().execute(url).get();
-            Assert.assertTrue(imageItemList.hits.size() == 0);
+            Assert.assertTrue(imageItemList.hits().size() == 0);
 
         } else
             Assert.fail("No Network");
@@ -40,7 +40,7 @@ public class ApiRequestTest {
                     "&per_page=50" +
                     "&q=cat";
             ImageItemList imageItemList = ApiRequest.run().execute(url).get();
-            Assert.assertTrue(imageItemList.hits.size() > 0);
+            Assert.assertTrue(imageItemList.hits().size() > 0);
         } else
             Assert.fail("No Network");
     }
@@ -53,7 +53,7 @@ public class ApiRequestTest {
                     "&image_type=photo" +
                     "&per_page=50";
             ImageItemList imageItemList = ApiRequest.run().execute(url).get();
-            Assert.assertTrue(imageItemList.hits.size() > 0);
+            Assert.assertTrue(imageItemList.hits().size() > 0);
         } else
             Assert.fail("No Network");
     }

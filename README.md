@@ -2,7 +2,7 @@
 
 Photo Search app using Pixabay
 
-used this [arch] project as an example
+used [world-atlas-exercise] project as a guide
 
 |        |     |
 | ---  | --- |
@@ -13,4 +13,4 @@ used this [arch] project as an example
 
 [s2]: https://github.com/ferdavs/Fotosh/blob/master/captures/device-2017-07-22-133833.png
 
-[arch]: https://github.com/erdalgns/world-atlas-exercise
+[world-atlas-exercise]: https://github.com/erdalgns/world-atlas-exercise

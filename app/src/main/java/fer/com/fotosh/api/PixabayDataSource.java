@@ -3,8 +3,9 @@ package fer.com.fotosh.api;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import fer.com.fotosh.model.ImageItem;
-import fer.com.fotosh.model.VideoItem;
+import fer.com.fotosh.data.model.ImageItem;
+import fer.com.fotosh.data.model.ImageItemList;
+import fer.com.fotosh.data.model.VideoItem;
 import io.reactivex.Observable;
 
 /**
@@ -25,12 +26,15 @@ public class PixabayDataSource implements DataSource {
 //    }
 
     @Override
-    public Observable<List<ImageItem>> searchImage(String term) throws ExecutionException, InterruptedException {
-        return Observable.fromArray();
+    public Observable<ImageItem> searchImage(String term) throws ExecutionException, InterruptedException {
+        String url = rootApi + "&q=" + term;
+        ImageItemList list = ApiRequest.run().execute(url).get();
+
+        return Observable.fromIterable(list.hits());
     }
 
     @Override
-    public Observable<List<VideoItem>> searchVideo(String term) throws ExecutionException, InterruptedException {
+    public Observable<VideoItem> searchVideo(String term) throws ExecutionException, InterruptedException {
         return Observable.fromArray();
     }
 }

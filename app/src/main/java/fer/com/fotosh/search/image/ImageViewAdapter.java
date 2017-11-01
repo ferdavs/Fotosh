@@ -7,12 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
 import fer.com.fotosh.R;
-import fer.com.fotosh.model.ImageItem;
+import fer.com.fotosh.data.model.ImageItem;
 
 public class ImageViewAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     private List<ImageItem> itemList;
@@ -45,13 +44,13 @@ public class ImageViewAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
         ImageItem item = itemList.get(position);
-        holder.tags.setText(item.getTags());
+        holder.tags.setText(item.tags());
         holder.image.invalidate();
         holder.item = item;
         holder.context = context;
 
         Glide.with(context)
-             .load(item.getPreviewURL())
+             .load(item.previewURL())
 //             .diskCacheStrategy(DiskCacheStrategy.RESULT)
 //             .centerCrop()
 //             .crossFade()

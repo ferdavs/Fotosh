@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import fer.com.fotosh.R;
-import fer.com.fotosh.model.ImageItem;
+import fer.com.fotosh.data.model.ImageItem;
 
 /**
  * Created by f on 7/19/17.
@@ -40,12 +40,12 @@ public class ImageDialog extends View {
     public void show() {
 
         Glide.with(getContext())
-                .load(item.getWebformatURL())
+                .load(item.webformatURL())
 //             .diskCacheStrategy(DiskCacheStrategy.ALL)
 //             .placeholder(R.drawable.loader)
 //             .skipMemoryCache(false)
                 .into(largeImage);
-        largeTags.setText(item.getTags());
+        largeTags.setText(item.tags());
         dialog.show();
     }
 

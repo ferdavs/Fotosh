@@ -40,12 +40,16 @@ public class ApiModule {
     }
 
 
+    @Singleton
+    @Provides
     Cache provideOkHttpCache(Application application) {
         int cacheSize = 10 * 1024 * 1024;
         Cache cache = new Cache(application.getCacheDir(), cacheSize);
         return cache;
     }
 
+    @Singleton
+    @Provides
     OkHttpClient provideApiClient(Cache cache, Context context) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.cache(cache);
@@ -61,6 +65,8 @@ public class ApiModule {
         return builder.build();
     }
 
+    @Singleton
+    @Provides
     Retrofit provideRetrofit(HttpUrl httpUrl, @Named("Api") OkHttpClient client, Gson gson) {
         return new Retrofit.Builder()
                 .client(client)
@@ -71,9 +77,8 @@ public class ApiModule {
     }
 
     @Provides
-    @NonNull
     @Singleton
-    PixabayApi provideNetworkService(Retrofit retrofit) {
+    PixabayApi provideApi(Retrofit retrofit) {
         return retrofit.create(PixabayApi.class);
     }
 

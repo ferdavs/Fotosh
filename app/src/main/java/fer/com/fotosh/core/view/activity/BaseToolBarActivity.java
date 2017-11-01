@@ -13,16 +13,15 @@ import fer.com.fotosh.R;
 
 public abstract class BaseToolBarActivity extends BaseActivity {
     @BindView(R.id.toolbar)
-    public Toolbar toolbar;
+    protected Toolbar toolbar;
 
 
     @BindView(R.id.toolbar_title)
-    public TextView title;
+    protected TextView title;
 
 
     @Override
-
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);

@@ -1,4 +1,4 @@
-package fer.com.fotosh.data;
+package fer.com.fotosh.data.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -13,5 +13,5 @@ import javax.inject.Qualifier;
 @Qualifier
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Local {
+public @interface Remote {
 }

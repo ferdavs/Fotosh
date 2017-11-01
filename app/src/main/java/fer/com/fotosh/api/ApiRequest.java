@@ -16,7 +16,8 @@ import timber.log.Timber;
 /**
  * Created by f on 7/18/17.
  */
-class ApiRequest extends AsyncTask<String, Void, ImageItemList> {
+@Deprecated
+public class ApiRequest extends AsyncTask<String, Void, ImageItemList> {
 
     //TODO use DI
     Gson gson = new GsonBuilder()

@@ -1,13 +1,10 @@
-package fer.com.fotosh.api;
-
-import java.util.List;
-
-import io.reactivex.Observable;
+package fer.com.fotosh.data;
 
 import java.util.concurrent.ExecutionException;
 
 import fer.com.fotosh.data.model.ImageItem;
 import fer.com.fotosh.data.model.VideoItem;
+import io.reactivex.Observable;
 
 /**
  * Created by f on 7/19/17.

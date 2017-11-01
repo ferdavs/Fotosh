@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import fer.com.fotosh.api.ApiModule;
+import fer.com.fotosh.data.DataModule;
 import timber.log.Timber;
 
 /**
@@ -14,7 +16,7 @@ public class PixabayApplication extends Application {
 
     private ApplicationComponent applicationComponent;
 
-    PixabayApplication get(@NonNull Context context) {
+    public static PixabayApplication get(@NonNull Context context) {
         return (PixabayApplication) context.getApplicationContext();
     }
 
@@ -24,6 +26,8 @@ public class PixabayApplication extends Application {
 
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
+                .apiModule(new ApiModule())
+                .dataModule(new DataModule())
                 .build();
 
         if (BuildConfig.DEBUG) {

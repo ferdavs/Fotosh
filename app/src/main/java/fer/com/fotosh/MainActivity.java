@@ -4,7 +4,6 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
@@ -12,24 +11,35 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-import fer.com.fotosh.api.DataSource;
-import fer.com.fotosh.api.PixabayDataSource;
+import javax.inject.Inject;
+
+import fer.com.fotosh.core.view.activity.BaseActivity;
+import fer.com.fotosh.data.DataRepository;
+import fer.com.fotosh.data.annotation.Remote;
+import fer.com.fotosh.data.annotation.Repository;
 import fer.com.fotosh.data.model.ImageItem;
 import fer.com.fotosh.search.image.ImageViewAdapter;
 import io.reactivex.disposables.Disposable;
+import okhttp3.OkHttpClient;
 import timber.log.Timber;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     ImageViewAdapter rcAdapter;
-    //TODO use DI
-    DataSource dataSource = new PixabayDataSource();
+
+//    @Remote
+    @Repository
+    @Inject
+    DataRepository dataSource;
+    @Inject
+    OkHttpClient mOkHttpClient;
+
     private static boolean startedFlag;//TODO get rid of this
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -87,5 +97,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void clicked(View view) {
         onSearchRequested();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return 0;
     }
 }

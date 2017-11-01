@@ -8,7 +8,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import javax.inject.Inject;
+
 import fer.com.fotosh.Helper;
+import fer.com.fotosh.data.DataSource;
 
 /**
  * Created by f on 7/22/17.
@@ -17,7 +20,9 @@ import fer.com.fotosh.Helper;
 public class PixabayDataSourceTest {
 
     Context context = InstrumentationRegistry.getTargetContext();
-    DataSource dataSource = new PixabayDataSource();
+
+    @Inject
+    DataSource dataSource;
 
     @Test
     public void searchEmpty() throws Exception {

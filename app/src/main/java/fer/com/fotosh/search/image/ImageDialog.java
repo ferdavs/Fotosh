@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
-
 import fer.com.fotosh.R;
 import fer.com.fotosh.data.model.ImageItem;
 
 /**
  * Created by f on 7/19/17.
+ *
+ *
  */
 
 public class ImageDialog extends View {
@@ -30,7 +30,8 @@ public class ImageDialog extends View {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.dismiss());
         dialog = builder.create();
-        View dialogLayout = LayoutInflater.from(context).inflate(R.layout.image_large, null);
+        View dialogLayout = LayoutInflater.from(context)
+                                          .inflate(R.layout.image_large, null);
         largeImage = dialogLayout.findViewById(R.id.largeImage);
         largeTags = dialogLayout.findViewById(R.id.tagsLarge);
         dialog.setView(dialogLayout);
@@ -40,11 +41,9 @@ public class ImageDialog extends View {
     public void show() {
 
         Glide.with(getContext())
-                .load(item.webformatURL())
-//             .diskCacheStrategy(DiskCacheStrategy.ALL)
-//             .placeholder(R.drawable.loader)
-//             .skipMemoryCache(false)
-                .into(largeImage);
+             .load(item.webformatURL())
+//                .thumbnail(0.1f)
+             .into(largeImage);
         largeTags.setText(item.tags());
         dialog.show();
     }

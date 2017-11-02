@@ -5,13 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.bumptech.glide.Glide;
-
-import java.util.List;
-
 import fer.com.fotosh.R;
 import fer.com.fotosh.data.model.ImageItem;
+
+import java.util.List;
 
 public class ImageViewAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     private List<ImageItem> itemList;
@@ -32,7 +30,7 @@ public class ImageViewAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View layoutView = LayoutInflater.from(parent.getContext())
                                         .inflate(R.layout.image_card, null);
-        return new ImageViewHolder(layoutView,context);
+        return new ImageViewHolder(layoutView, context);
     }
 
     @Override
@@ -51,10 +49,7 @@ public class ImageViewAdapter extends RecyclerView.Adapter<ImageViewHolder> {
 
         Glide.with(context)
              .load(item.previewURL())
-//             .diskCacheStrategy(DiskCacheStrategy.RESULT)
-//             .centerCrop()
-//             .crossFade()
-//             .skipMemoryCache(true)
+//                .thumbnail(0.1f)
              .into(holder.image);
     }
 

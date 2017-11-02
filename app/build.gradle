@@ -75,6 +75,7 @@ dependencies {
     compile libraries.retrofitGsonConverter
     compile libraries.retrofitRxJavaAdapter
     compile libraries.gson
+    compile libraries.guava
     //Do not compile AutoValue dependencies to the app
     annotationProcessor libraries.autoValue
     annotationProcessor libraries.autoValueGson

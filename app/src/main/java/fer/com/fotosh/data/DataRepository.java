@@ -1,16 +1,14 @@
 package fer.com.fotosh.data;
 
 import android.support.annotation.NonNull;
-
-import java.util.concurrent.ExecutionException;
-
-import javax.inject.Inject;
-
 import fer.com.fotosh.data.annotation.Local;
 import fer.com.fotosh.data.annotation.Remote;
 import fer.com.fotosh.data.model.ImageItem;
 import fer.com.fotosh.data.model.VideoItem;
 import io.reactivex.Observable;
+
+import javax.inject.Inject;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by f on 11/1/17.
@@ -23,7 +21,7 @@ public class DataRepository implements DataSource {
     private final DataSource remote;
 
     @NonNull
-    @Remote
+    @Local
     private final DataSource local;
 
     @Inject
@@ -34,7 +32,7 @@ public class DataRepository implements DataSource {
 
     @Override
     public Observable<ImageItem> searchImage(String term) throws ExecutionException, InterruptedException {
-        //TODO use local data source as cache
+        //TODO use local data source as a cache
         return remote.searchImage(term);
     }
 

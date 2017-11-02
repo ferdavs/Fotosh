@@ -3,16 +3,9 @@ package fer.com.fotosh.api;
 import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapterFactory;
-
-import java.util.concurrent.TimeUnit;
-
-import javax.inject.Named;
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import fer.com.fotosh.BuildConfig;
@@ -25,13 +18,19 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import javax.inject.Named;
+import javax.inject.Singleton;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by f on 11/1/17.
+ *
+ *
  */
 
 @Module
 public class ApiModule {
-    public static final HttpUrl API_URL = HttpUrl.parse("https://pixabay.com/api/");
+    public static final HttpUrl API_URL = HttpUrl.parse("https://pixabay.com/");
 
     @Provides
     @Singleton
@@ -50,6 +49,7 @@ public class ApiModule {
 
     @Singleton
     @Provides
+    @Named("Api")
     OkHttpClient provideApiClient(Cache cache, Context context) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.cache(cache);
@@ -85,7 +85,7 @@ public class ApiModule {
     @Provides
     @NonNull
     @Singleton
-    public TypeAdapterFactory proTypeAdapterFactory() {
+    public TypeAdapterFactory provideTypeAdapterFactory() {
         return EntityTypeAdapterFactory.create();
     }
 

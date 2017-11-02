@@ -8,44 +8,43 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
-
+import butterknife.BindView;
 import fer.com.fotosh.core.view.activity.BaseActivity;
-import fer.com.fotosh.data.DataRepository;
-import fer.com.fotosh.data.annotation.Remote;
+import fer.com.fotosh.data.DataSource;
 import fer.com.fotosh.data.annotation.Repository;
 import fer.com.fotosh.data.model.ImageItem;
 import fer.com.fotosh.search.image.ImageViewAdapter;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import okhttp3.OkHttpClient;
 import timber.log.Timber;
+
+import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends BaseActivity {
     ImageViewAdapter rcAdapter;
 
-//    @Remote
     @Repository
     @Inject
-    DataRepository dataSource;
-    @Inject
-    OkHttpClient mOkHttpClient;
+    DataSource dataSource;
 
     private static boolean startedFlag;//TODO get rid of this
+
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        //TODO
+        ((PixabayApplication) getApplication()).getApplicationComponent()
+                                               .inject(this);
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
 //        recyclerView.setHasFixedSize(true);
 
-        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(3,
+        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2,
                 StaggeredGridLayoutManager.VERTICAL);
 
         recyclerView.setLayoutManager(manager);
@@ -57,16 +56,21 @@ public class MainActivity extends BaseActivity {
 
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY).replace(' ', ',');
-            try {
-                rcAdapter.removeAll();
-                Disposable subscribe = dataSource.searchImage(query)
-                        .subscribe(imageItems -> rcAdapter.addItem(imageItems), Timber::e);
+            String query = intent.getStringExtra(SearchManager.QUERY)
+                                 .replace(' ', ',');
+            search(query);
+        }
+    }
 
-            } catch (Exception e) {
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT)
-                        .show();
-            }
+    private void search(String query) {
+        try {
+            rcAdapter.removeAll();
+            Disposable subscribe = dataSource.searchImage(query)
+                                             .observeOn(AndroidSchedulers.mainThread())
+                                             .subscribe(imageItems -> rcAdapter.addItem(imageItems), Timber::e);
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT)
+                 .show();
         }
     }
 
@@ -83,14 +87,7 @@ public class MainActivity extends BaseActivity {
         super.onPostCreate(savedInstanceState);
         if (!startedFlag) {
             startedFlag = true;
-            try {
-                Disposable cat = dataSource.searchImage("cat")
-                        .subscribe(imageItems -> rcAdapter.addItem(imageItems), Timber::e);
-
-            } catch (Exception e) {
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT)
-                        .show();
-            }
+            search("cat");
         }
 
     }
@@ -101,6 +98,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.activity_main;
     }
 }

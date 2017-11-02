@@ -1,12 +1,12 @@
 package fer.com.fotosh.data;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import fer.com.fotosh.data.annotation.Local;
 import fer.com.fotosh.data.annotation.Remote;
 import fer.com.fotosh.data.annotation.Repository;
+
+import javax.inject.Singleton;
 
 /**
  * Created by f on 11/1/17.
@@ -18,10 +18,10 @@ public class DataModule {
     @Singleton
     @Provides
     @Repository
-    DataRepository providesDataRepository(DataRepository repo) {
+    DataSource providesDataRepository(DataRepository repo) {
         return repo;
     }
-    
+
     @Singleton
     @Provides
     @Remote

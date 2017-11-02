@@ -35,7 +35,7 @@ ext.versions = [
         butterKnife          : '8.5.1',
         glide                : '4.2.0',
         floatingsearchview   : '2.1.1',
-
+        guava                : '19.0',
         // Logging
         timber               : '4.6.0',
 
@@ -95,7 +95,7 @@ ext.libraries = [
         timber                  : "com.jakewharton.timber:timber:$versions.timber",
         glide                   : "com.github.bumptech.glide:glide:$versions.glide",
         floatingsearchview      : "com.github.arimorty:floatingsearchview:$versions.floatingsearchview",
-
+        guava                   : "com.google.guava:guava:$versions.guava",
         // Testing
         junit                   : "junit:junit:$versions.junit",
         assertJ                 : "org.assertj:assertj-core:$versions.assertJ",

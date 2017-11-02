@@ -11,9 +11,18 @@
         android:layout_height="match_parent">
 
         <FrameLayout
+            android:id="@+id/toolbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/toolbar" />
+        </FrameLayout>
+
+        <FrameLayout
             android:id="@+id/main_fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar_container">
 
             <include layout="@layout/fragment_image_listing" />
         </FrameLayout>

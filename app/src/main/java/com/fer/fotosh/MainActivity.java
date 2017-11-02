@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import com.fer.fotosh.core.view.activity.BaseActivity;
+import com.fer.fotosh.core.view.activity.BaseToolBarActivity;
 import com.fer.fotosh.core.view.fragment.BaseFragment;
 import com.fer.fotosh.search.image.ImageListContract;
 import com.fer.fotosh.search.image.ImageListingFragment;
@@ -14,7 +14,7 @@ import fer.com.fotosh.R;
 
 import javax.inject.Inject;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseToolBarActivity {
     private static final String BACK_STACK_ROOT_TAG = "root_fragment";
 
     @Inject
@@ -34,6 +34,7 @@ public class MainActivity extends BaseActivity {
 
         if (savedInstanceState == null) {
             replaceFragment(new ImageListingFragment(), ImageListingFragment.TAG);
+            title.setText(R.string.app_name);
         }
 
         Intent intent = getIntent();

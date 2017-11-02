@@ -32,8 +32,8 @@ public class PixabayDataSource implements DataSource {
         //TODO convert into advanced search
         Map<String, String> param = ImmutableMap.of(
                 "image_type", "photo",
-                "per_page", "50",
-                "editors_choice", "true",
+                "per_page", "20",
+                "editors_choice", "false",
                 "lang", "en"
         );
         return api.searchImage(API_KEY, term, param)

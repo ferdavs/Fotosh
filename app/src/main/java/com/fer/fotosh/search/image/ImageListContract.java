@@ -14,15 +14,12 @@ public interface ImageListContract {
     interface View {
         void showImages(List<ImageItem> images);
 
-        void showImageDetails(ImageItem image);
-
         void showError(Throwable error);
 
         void showLoading();
     }
 
     abstract class Presenter extends RxPresenter<View> {
-        public abstract void showImageDetail(ImageItem image);
 
         public abstract void searchImage(String query);
 

@@ -95,12 +95,6 @@ public class ImageListingFragment extends BaseFragment implements ImageListContr
     }
 
     @Override
-    public void showImageDetails(ImageItem image) {
-        //TODO show ImageDialog
-        ImageDialog.show(getContext(), image);
-    }
-
-    @Override
     public void showError(Throwable error) {
 
     }

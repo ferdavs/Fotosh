@@ -3,7 +3,6 @@ package com.fer.fotosh.search.image;
 import android.support.annotation.NonNull;
 import com.fer.fotosh.data.DataSource;
 import com.fer.fotosh.data.annotation.Repository;
-import com.fer.fotosh.data.model.ImageItem;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
@@ -21,11 +20,6 @@ public class ImageListPresenter extends ImageListContract.Presenter {
     @Inject
     public ImageListPresenter(@NonNull @Repository DataSource dataSource) {
         this.dataSource = dataSource;
-    }
-
-    @Override
-    public void showImageDetail(ImageItem image) {
-        getView().showImageDetails(image);
     }
 
     @Override

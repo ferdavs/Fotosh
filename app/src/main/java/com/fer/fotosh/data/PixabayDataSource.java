@@ -31,7 +31,7 @@ public class PixabayDataSource implements DataSource {
     public Observable<List<ImageItem>> searchImage(String term) {
         //TODO convert into advanced search
         Map<String, String> param = ImmutableMap.of(
-                "image_type", "all",
+                "image_type", "photo",
                 "per_page", "50",
                 "editors_choice", "true",
                 "lang", "en"

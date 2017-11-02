@@ -17,8 +17,6 @@ import javax.inject.Inject;
 public class MainActivity extends BaseActivity {
     private static final String BACK_STACK_ROOT_TAG = "root_fragment";
 
-    private static boolean startedFlag;//TODO get rid of this
-
     @Inject
     ImageListContract.Presenter presenter;
 
@@ -45,23 +43,6 @@ public class MainActivity extends BaseActivity {
             presenter.searchImage(query);
         }
     }
-
-
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        if (isFinishing()) {
-//            startedFlag = false;
-//        }
-//    }
-//
-//    @Override
-//    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-//        super.onPostCreate(savedInstanceState);
-//        if (!startedFlag) {
-//            startedFlag = true;
-//        }
-//    }
 
     public void clicked(View view) {
         onSearchRequested();

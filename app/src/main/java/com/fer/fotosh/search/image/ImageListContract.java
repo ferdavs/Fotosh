@@ -15,8 +15,6 @@ public interface ImageListContract {
         void showImages(List<ImageItem> images);
 
         void showError(Throwable error);
-
-        void showLoading();
     }
 
     abstract class Presenter extends RxPresenter<View> {

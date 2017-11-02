@@ -24,8 +24,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by f on 11/1/17.
- *
- *
  */
 
 @Module
@@ -85,14 +83,14 @@ public class ApiModule {
     @Provides
     @NonNull
     @Singleton
-    public TypeAdapterFactory provideTypeAdapterFactory() {
+    TypeAdapterFactory provideTypeAdapterFactory() {
         return EntityTypeAdapterFactory.create();
     }
 
     @Provides
     @NonNull
     @Singleton
-    public Gson provideGson(TypeAdapterFactory typeAdapterFactory) {
+    Gson provideGson(TypeAdapterFactory typeAdapterFactory) {
         return new GsonBuilder()
                 .setLenient()
                 .registerTypeAdapterFactory(typeAdapterFactory)

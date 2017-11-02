@@ -46,45 +46,4 @@ public class ImageListRecyclerAdapter extends BaseRecyclerAdapter<ImageViewHolde
              .into(holder.image);
 
     }
-
-//    @Override
-//    public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        View layoutView = LayoutInflater.from(parent.getContext())
-//                                        .inflate(R.layout.image_card, null);
-//        return new ImageViewHolder(layoutView, context);
-//    }
-
-//    @Override
-//    public void onViewRecycled(ImageViewHolder holder) {
-//
-//        super.onViewRecycled(holder);
-//    }
-
-//    @Override
-//    public void onBindViewHolder(ImageViewHolder holder, int position) {
-//        ImageItem item = itemList.get(position);
-//        holder.tags.setText(item.tags());
-//        holder.image.invalidate();
-//        holder.item = item;
-//        holder.context = context;
-//
-//        Glide.with(context)
-//             .load(item.previewURL())
-////                .thumbnail(0.1f)
-//             .into(holder.image);
-//    }
-
-//    @Override
-//    public int getItemCount() {
-//        return this.itemList.size();
-//    }
-//
-//    public void addItems(List<ImageItem> search) {
-////        int prev = itemList.size();
-//        itemList.addAll(search);
-////        notifyItemRangeInserted(prev, search.size());
-//        notifyDataSetChanged();
-//    }
-
-
 }

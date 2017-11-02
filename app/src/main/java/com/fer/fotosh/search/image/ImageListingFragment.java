@@ -38,7 +38,6 @@ public class ImageListingFragment extends BaseFragment implements ImageListContr
         return R.layout.fragment_image_listing;
     }
 
-    //    @Inject
     public ImageListingFragment() {
         // Required empty public constructor
     }
@@ -52,18 +51,6 @@ public class ImageListingFragment extends BaseFragment implements ImageListContr
         presenter.onViewAttached(this);
         presenter.searchImage("cat");
     }
-
-//    private void search(String query) {
-//        try {
-//            rcAdapter.removeAll();
-//            Disposable subscribe = dataSource.searchImage(query)
-//                                             .observeOn(AndroidSchedulers.mainThread())
-//                                             .subscribe(this::showImages, Timber::e);
-//        } catch (Exception e) {
-//            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT)
-//                 .show();
-//        }
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,20 +85,5 @@ public class ImageListingFragment extends BaseFragment implements ImageListContr
     public void showError(Throwable error) {
 
     }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-//    @Override
-//    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-//        super.onPostCreate(savedInstanceState);
-//        if (!startedFlag) {
-//            startedFlag = true;
-//            search("cat");
-//        }
-//    }
-
 
 }

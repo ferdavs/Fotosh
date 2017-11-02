@@ -25,16 +25,10 @@ public class ImageViewHolder extends RecyclerView.ViewHolder implements
         itemView.setOnClickListener(this);
         tags = itemView.findViewById(R.id.tags);
         image = itemView.findViewById(R.id.image);
-
-
     }
 
     @Override
     public void onClick(View view) {
-//        Toast.makeText(view.getContext(),
-//                "Clicked Position = " + getAdapterPosition(), Toast.LENGTH_SHORT)
-//             .show();
-
         ImageDialog.show(context, item);
     }
 

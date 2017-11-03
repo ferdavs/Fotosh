@@ -4,17 +4,18 @@ import com.fer.fotosh.search.image.ImageListContract;
 import com.fer.fotosh.search.image.ImageListPresenter;
 import com.fer.fotosh.search.video.VideListPresenter;
 import com.fer.fotosh.search.video.VideoListContract;
-import dagger.Module;
-import dagger.Provides;
 
 import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 
 /**
  * Created by f on 11/2/17.
  */
 
 @Module
-public class PresentationModule {
+class PresentationModule {
 
     @Singleton
     @Provides

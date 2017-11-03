@@ -1,29 +1,32 @@
 package com.fer.fotosh.data;
 
 import android.support.annotation.NonNull;
+
 import com.fer.fotosh.api.PixabayApi;
 import com.fer.fotosh.data.model.ImageItem;
 import com.fer.fotosh.data.model.ImageItemList;
 import com.fer.fotosh.data.model.VideoItem;
 import com.google.common.collect.ImmutableMap;
-import io.reactivex.Maybe;
-import io.reactivex.schedulers.Schedulers;
 
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Map;
+
+import javax.inject.Inject;
+
+import io.reactivex.Maybe;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by f on 7/19/17.
  */
-public class PixabayDataSource implements DataSource {
+class PixabayDataSource implements DataSource {
     private static final String API_KEY = "5932369-98914f23226be434a04032bff";
 
     @NonNull
     private PixabayApi api;
 
     @Inject
-    public PixabayDataSource(@NonNull PixabayApi api) {
+    PixabayDataSource(@NonNull PixabayApi api) {
         this.api = api;
     }
 

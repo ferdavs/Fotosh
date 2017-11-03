@@ -3,10 +3,11 @@ package com.fer.fotosh.data;
 import com.fer.fotosh.data.annotation.Local;
 import com.fer.fotosh.data.annotation.Remote;
 import com.fer.fotosh.data.annotation.Repository;
-import dagger.Module;
-import dagger.Provides;
 
 import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 
 /**
  * Created by f on 11/1/17.

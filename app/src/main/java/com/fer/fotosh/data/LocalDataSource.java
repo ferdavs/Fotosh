@@ -2,26 +2,28 @@ package com.fer.fotosh.data;
 
 import com.fer.fotosh.data.model.ImageItem;
 import com.fer.fotosh.data.model.VideoItem;
-import io.reactivex.Maybe;
-import io.reactivex.Observable;
 
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
+import io.reactivex.Maybe;
+import io.reactivex.Observable;
+
 /**
  * Created by f on 7/19/17.
  */
 
-public class LocalDataSource implements DataSource {
+class LocalDataSource implements DataSource {
 
     private Map<String, List<ImageItem>> images;
     private Map<String, List<VideoItem>> videos;
 
     @Inject
-    public LocalDataSource() {
+    LocalDataSource() {
         images = new HashMap<>();
         videos = new HashMap<>();
     }

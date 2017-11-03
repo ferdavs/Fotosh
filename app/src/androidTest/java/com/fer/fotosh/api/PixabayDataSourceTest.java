@@ -3,8 +3,10 @@ package com.fer.fotosh.api;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-import com.fer.fotosh.Helper;
+
 import com.fer.fotosh.data.DataSource;
+import com.fer.fotosh.util.Helper;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

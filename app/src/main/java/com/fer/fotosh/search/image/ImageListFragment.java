@@ -30,9 +30,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ImageListingFragment extends BaseFragment implements ImageListContract.View {
+public class ImageListFragment extends BaseFragment implements ImageListContract.View {
 
-    public static final String TAG = "ImageListingFragment";
+    public static final String TAG = "ImageListFragment";
     @Inject
     ImageListContract.Presenter presenter;
 
@@ -48,7 +48,7 @@ public class ImageListingFragment extends BaseFragment implements ImageListContr
         return R.layout.fragment_image_listing;
     }
 
-    public ImageListingFragment() {
+    public ImageListFragment() {
         // Required empty public constructor
     }
 
@@ -71,7 +71,7 @@ public class ImageListingFragment extends BaseFragment implements ImageListContr
 
         Disposable subscribe = RxTextView.textChanges(searchEditText)
                                          .debounce(1000, TimeUnit.MILLISECONDS)
-                                         .compose(bindToLifecycle())
+//                                         .compose(bindToLifecycle())
                                          .subscribeOn(Schedulers.io())
                                          .observeOn(AndroidSchedulers.mainThread())
                                          .subscribe(query -> presenter.searchImage(query.toString()),

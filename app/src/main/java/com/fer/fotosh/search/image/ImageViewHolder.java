@@ -10,6 +10,8 @@ import fer.com.fotosh.R;
 
 /**
  * Created by f on 7/18/17.
+ *
+ *
  */
 
 public class ImageViewHolder extends RecyclerView.ViewHolder implements

@@ -6,7 +6,7 @@ import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by f on 10/31/17.
@@ -21,7 +21,7 @@ public abstract class VideoItemList implements Parcelable {
     public abstract Integer totalHits();
 
     @Nullable
-    public abstract List<VideoItem> hits();
+    public abstract ArrayList<VideoItem> hits();
 
     public static TypeAdapter<VideoItemList> typeAdapter(Gson gson) {
         return new AutoValue_VideoItemList.GsonTypeAdapter(gson);
@@ -37,7 +37,7 @@ public abstract class VideoItemList implements Parcelable {
 
         public abstract Builder totalHits(@Nullable Integer totalHits);
 
-        public abstract Builder hits(@Nullable List<VideoItem> hits);
+        public abstract Builder hits(@Nullable ArrayList<VideoItem> hits);
 
         public abstract VideoItemList build();
     }

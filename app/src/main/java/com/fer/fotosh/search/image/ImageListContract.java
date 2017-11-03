@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * Created by f on 10/31/17.
+ *
+ *
  */
 
 public interface ImageListContract {

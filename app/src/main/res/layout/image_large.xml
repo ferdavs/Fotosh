@@ -5,12 +5,13 @@
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
     android:layout_gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg">
 
     <TextView
         android:id="@+id/tagsLarge"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#1976D2"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />

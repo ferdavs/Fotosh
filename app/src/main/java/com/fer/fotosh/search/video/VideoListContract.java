@@ -8,9 +8,11 @@ import java.util.List;
 
 /**
  * Created by f on 10/31/17.
+ *
+ *
  */
 
-public interface VideoSearchContract {
+public interface VideoListContract {
     interface View {
         void showVideoThumbnails(List<VideoItem> videos);
 

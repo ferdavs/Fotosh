@@ -13,8 +13,6 @@ import fer.com.fotosh.R;
 
 /**
  * Created by f on 7/19/17.
- *
- *
  */
 
 public class ImageDialog extends View {
@@ -30,6 +28,11 @@ public class ImageDialog extends View {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.dismiss());
         dialog = builder.create();
+//        dialog.getWindow()
+//              .setBackgroundDrawableResource(R.drawable.dialog_bg);
+//        dialog.getWindow()
+//              .setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
         View dialogLayout = LayoutInflater.from(context)
                                           .inflate(R.layout.image_large, null);
         largeImage = dialogLayout.findViewById(R.id.largeImage);

@@ -6,11 +6,11 @@ import com.fer.fotosh.data.model.ImageItem;
 import com.fer.fotosh.data.model.ImageItemList;
 import com.fer.fotosh.data.model.VideoItem;
 import com.google.common.collect.ImmutableMap;
-import io.reactivex.Observable;
+import io.reactivex.Maybe;
 import io.reactivex.schedulers.Schedulers;
 
 import javax.inject.Inject;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -28,7 +28,7 @@ public class PixabayDataSource implements DataSource {
     }
 
     @Override
-    public Observable<List<ImageItem>> searchImage(String term) {
+    public Maybe<ArrayList<ImageItem>> searchImage(String term) {
         //TODO convert into advanced search
         Map<String, String> param = ImmutableMap.of(
                 "image_type", "photo",
@@ -38,11 +38,33 @@ public class PixabayDataSource implements DataSource {
         );
         return api.searchImage(API_KEY, term, param)
                   .subscribeOn(Schedulers.io())
+                  .toSingle()
+                  .toMaybe()
                   .map(ImageItemList::hits);
     }
 
     @Override
-    public Observable<List<VideoItem>> searchVideo(String term) {
-        return Observable.empty();
+    public Maybe<ArrayList<VideoItem>> searchVideo(String term) {
+        return Maybe.empty();
+    }
+
+    @Override
+    public boolean containsImages(String term) {
+        return false;
+    }
+
+    @Override
+    public boolean containsVideos(String term) {
+        return false;
+    }
+
+    @Override
+    public void saveVideos(String term, ArrayList<VideoItem> videoItems) {
+
+    }
+
+    @Override
+    public void saveImages(String term, ArrayList<ImageItem> imageItems) {
+
     }
 }

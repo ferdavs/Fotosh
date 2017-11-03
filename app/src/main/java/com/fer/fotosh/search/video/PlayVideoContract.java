@@ -5,6 +5,8 @@ import com.fer.fotosh.data.model.VideoItem;
 
 /**
  * Created by f on 10/31/17.
+ *
+ *
  */
 
 public interface PlayVideoContract {

@@ -6,7 +6,7 @@ import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by f on 7/19/17.
@@ -22,7 +22,7 @@ public abstract class ImageItemList implements Parcelable {
     public abstract Integer totalHits();
 
     @Nullable
-    public abstract List<ImageItem> hits();
+    public abstract ArrayList<ImageItem> hits();
 
     public static TypeAdapter<ImageItemList> typeAdapter(Gson gson) {
         return new AutoValue_ImageItemList.GsonTypeAdapter(gson);
@@ -38,7 +38,7 @@ public abstract class ImageItemList implements Parcelable {
 
         public abstract Builder totalHits(@Nullable Integer totalHits);
 
-        public abstract Builder hits(@Nullable List<ImageItem> hits);
+        public abstract Builder hits(@Nullable ArrayList<ImageItem> hits);
 
         public abstract ImageItemList build();
     }

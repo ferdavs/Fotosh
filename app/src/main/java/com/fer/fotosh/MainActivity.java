@@ -5,11 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import com.fer.fotosh.core.view.activity.BaseToolBarActivity;
 import com.fer.fotosh.core.view.fragment.BaseFragment;
 import com.fer.fotosh.search.image.ImageListContract;
-import com.fer.fotosh.search.image.ImageListingFragment;
+import com.fer.fotosh.search.image.ImageListFragment;
 import fer.com.fotosh.R;
 
 import javax.inject.Inject;
@@ -33,7 +32,7 @@ public class MainActivity extends BaseToolBarActivity {
                           .inject(this);
 
         if (savedInstanceState == null) {
-            replaceFragment(new ImageListingFragment(), ImageListingFragment.TAG);
+            replaceFragment(new ImageListFragment(), ImageListFragment.TAG);
             title.setText(R.string.app_name);
         }
 
@@ -43,10 +42,6 @@ public class MainActivity extends BaseToolBarActivity {
                                  .replace(' ', ',');
             presenter.searchImage(query);
         }
-    }
-
-    public void clicked(View view) {
-        onSearchRequested();
     }
 
     public void replaceFragment(BaseFragment fragment, String tag) {

@@ -1,4 +1,4 @@
-package com.fer.fotosh;
+package com.fer.fotosh.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

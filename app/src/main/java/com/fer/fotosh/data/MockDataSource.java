@@ -2,15 +2,16 @@ package com.fer.fotosh.data;
 
 import com.fer.fotosh.data.model.ImageItem;
 import com.fer.fotosh.data.model.VideoItem;
-import io.reactivex.Maybe;
 
 import java.util.ArrayList;
+
+import io.reactivex.Maybe;
 
 /**
  * Created by f on 7/19/17.
  */
 
-public class MockDataSource implements DataSource {
+class MockDataSource implements DataSource {
     @Override
     public Maybe<ArrayList<ImageItem>> searchImage(String term) {
         return Maybe.empty();
